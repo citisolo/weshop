@@ -5,7 +5,6 @@ export const GET_CATEGORY = 'GET_CATEGORY';
 export const GET_PRODUCTS = 'GET_PRODUCTS';
 export const GET_PRODUCT = 'GET_PRODUCT';
 
-console.log(productData);
 const Product = productData.ProductCollection;
 
 export const getCategories = categories => {
@@ -25,13 +24,12 @@ export const getProduct = product => {
 };
 
 export const fetchProducts = name => dispatch => {
-	console.log(name);
 	const category = Product.filter(p => p.Category === name);
-	console.log(category);
 	return dispatch(getProducts(category));
 };
 
 export const fetchProduct = id => dispatch => {
 	const product = Product.filter(p => p.ProductId === id);
-	return dispatch(getProducts(product));
+	console.log(product);
+	return dispatch(getProduct(product[0]));
 };

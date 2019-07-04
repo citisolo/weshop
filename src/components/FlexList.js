@@ -1,5 +1,6 @@
 import React from 'react';
 import { List, Card, Image } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const FlexWrapper = styled.div`
@@ -13,11 +14,12 @@ const FlexItemWrapper = styled.div`
 `;
 
 const FlexList = ({ items }) => {
+	console.log(`[FlexList]: items=${items}`);
 	const formatList = list => {
 		return list.map(item => (
-			<FlexItemWrapper>
+			<FlexItemWrapper key={item.ProductId}>
 				<Card>
-					<Image src={item.ProductPicUrl} bordered size="medium" />
+					<Image src={item.ProductPicUrl} href={`/product/${item.ProductId}`} bordered size="medium" />
 					<Card.Header>{item.Name}</Card.Header>
 				</Card>
 			</FlexItemWrapper>

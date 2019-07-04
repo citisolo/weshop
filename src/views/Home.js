@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import FlexList from '../components/FlexList';
-import { Container } from 'semantic-ui-react';
+import { Container, Loader } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import { fetchProducts } from '../actions/actions';
 
 const Home = props => {
-	const { products } = props;
-	return (
+	const {
+		products,
+		match: { params },
+	} = props;
+
+	const [isLoading, setIsLoading] = useState(true);
+
+	useEffect(() => {
+		props.dispatch(fetchProducts(params.category));
+		setIsLoading(false);
+	}, []);
+
+	return isLoading ? (
+		<Loader active />
+	) : (
 		<Container>
 			<FlexList items={products} />
 		</Container>
@@ -14,13 +28,10 @@ const Home = props => {
 
 const mapStateToProps = state => {
 	const { productReducer } = state;
-	const { categories, category, products, product } = productReducer;
+	const { products } = productReducer;
 
 	return {
-		categories,
-		category,
 		products,
-		product,
 	};
 };
 

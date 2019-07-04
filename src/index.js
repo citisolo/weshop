@@ -8,6 +8,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import productData from './products';
 import configureStore from './store';
+import { createBrowserHistory } from 'history';
 
 const collection = productData.ProductCollection;
 const categories = [...new Set(collection.map(product => product.Category))];
@@ -22,11 +23,11 @@ const initialState = {
 	product,
 };
 
-console.log(initialState);
+// console.log(initialState);
 
 ReactDOM.render(
 	<Provider store={configureStore({ productReducer: initialState })}>
-		<BrowserRouter>
+		<BrowserRouter history={createBrowserHistory()}>
 			<App />
 		</BrowserRouter>
 	</Provider>,
