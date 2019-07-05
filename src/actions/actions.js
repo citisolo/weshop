@@ -4,8 +4,11 @@ export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const GET_CATEGORY = 'GET_CATEGORY';
 export const GET_PRODUCTS = 'GET_PRODUCTS';
 export const GET_PRODUCT = 'GET_PRODUCT';
+export const ADD_PRODUCT = 'ADD_PRODUCT';
+export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
 
 const Product = productData.ProductCollection;
+const Basket = productData.Basket;
 
 export const getCategories = categories => {
 	return { type: GET_CATEGORIES, categories };
@@ -17,6 +20,14 @@ export const getCategory = category => {
 
 export const getProducts = products => {
 	return { type: GET_PRODUCTS, products };
+};
+
+export const addProduct = product => {
+	return { type: ADD_PRODUCT, product };
+};
+
+export const removeProduct = productId => {
+	return { type: REMOVE_PRODUCT, productId };
 };
 
 export const getProduct = product => {
@@ -32,4 +43,12 @@ export const fetchProduct = id => dispatch => {
 	const product = Product.filter(p => p.ProductId === id);
 	console.log(product);
 	return dispatch(getProduct(product[0]));
+};
+
+export const addProductToBasket = product => dispatch => {
+	return dispatch(addProduct(product));
+};
+
+export const removeProductFromBasket = productId => dispatch => {
+	return dispatch(removeProduct(productId));
 };

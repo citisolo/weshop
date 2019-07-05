@@ -10,7 +10,6 @@ const Product = props => {
 		match: { params },
 	} = props;
 
-	console.log('PRODUCT');
 	const productId = params.id;
 
 	useEffect(() => {

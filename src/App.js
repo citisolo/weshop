@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Switch, Route, Router, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Home from './views/Home';
-import Category from './views/Category.js';
 import Product from './views/Product.js';
 import Basket from './views/Basket.js';
 import Menu from './components/CategoryMenu';
@@ -16,10 +15,10 @@ function App(props) {
 			<Router history={createBrowserHistory()}>
 				<Menu categories={categories} />
 				<Switch>
+					<Route path="/basket" component={Basket} />
 					<Route exact path="/" render={() => <Redirect to="/Laptops" />} />
 					<Route exact path="/:category?" component={Home} />
 					<Route path="/product/:id" component={Product} />
-					<Route path="/basket" component={Basket} />
 				</Switch>
 			</Router>
 		</main>

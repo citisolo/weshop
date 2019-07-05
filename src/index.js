@@ -9,6 +9,7 @@ import * as serviceWorker from './serviceWorker';
 import productData from './products';
 import configureStore from './store';
 import { createBrowserHistory } from 'history';
+import { Container } from 'semantic-ui-react';
 
 const collection = productData.ProductCollection;
 const categories = [...new Set(collection.map(product => product.Category))];
@@ -17,18 +18,25 @@ const products = [...new Set(collection.filter(product => product.Category === c
 const product = products[0];
 
 const initialState = {
-	categories,
-	category,
-	products,
-	product,
+	productReducer: {
+		categories,
+		category,
+		products,
+		product,
+	},
+	shoppingBasketReducer: {
+		basket: [{ product, quantity: 1 }],
+	},
 };
 
 // console.log(initialState);
 
 ReactDOM.render(
-	<Provider store={configureStore({ productReducer: initialState })}>
+	<Provider store={configureStore(initialState)}>
 		<BrowserRouter history={createBrowserHistory()}>
-			<App />
+			<Container>
+				<App />
+			</Container>
 		</BrowserRouter>
 	</Provider>,
 	document.getElementById('root')

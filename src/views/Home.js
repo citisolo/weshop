@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import FlexList from '../components/FlexList';
-import { Container, Loader } from 'semantic-ui-react';
+import { Container, Loader, Segment, Header } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { fetchProducts } from '../actions/actions';
 
@@ -21,7 +21,12 @@ const Home = props => {
 		<Loader active />
 	) : (
 		<Container>
-			<FlexList items={products} />
+			<Header as="h2" attached="top">
+				{params.category}
+			</Header>
+			<Segment attached>
+				<FlexList items={products} />
+			</Segment>
 		</Container>
 	);
 };
