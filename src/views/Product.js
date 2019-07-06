@@ -6,11 +6,15 @@ import styled from 'styled-components';
 
 const ProductWrapper = styled.div`
 	display: flex;
+	flex-direction: column;
 	justify-content: flex-start;
+	img {
+		width: 15em;
+		height: 12em;
+	}
 	flex-wrap: wrap;
-	div {
-		margin: 0.2em;
-		width: 100%;
+	* {
+		margin: 1em;
 	}
 `;
 
@@ -18,16 +22,15 @@ const ProductDataWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
+	align-self: flex-end;
 
 	h3 {
-		align-self: flex-end;
 		.ui.label {
 			font-size: large;
 		}
 	}
+
 	button {
-		width: 30%;
-		align-self: flex-end;
 	}
 `;
 
@@ -77,13 +80,14 @@ const Product = props => {
 				content={'Go to basket ?'}
 			/>
 			<ProductWrapper>
-				<Image src={`/${product.ProductPicUrl}`} bordered size="medium" />
+				<Header as="h2">{product.Name}</Header>
+				<Image src={`/${product.ProductPicUrl}`} />
+				<Header as="h2">{product.Description}</Header>
 				<ProductDataWrapper>
-					<Header as="h2">{product.Description}</Header>
 					<Header as="h3">
 						<Label>{`£${product.Price}`}</Label>
 					</Header>
-					<Button onClick={onAddProduct}>Add to basket</Button>
+					<Button content="Buy" onClick={onAddProduct} secondary />
 				</ProductDataWrapper>
 			</ProductWrapper>
 		</React.Fragment>
