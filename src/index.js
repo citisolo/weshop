@@ -17,6 +17,8 @@ const category = categories[0];
 const products = [...new Set(collection.filter(product => product.Category === category))];
 const product = products[0];
 
+const basket = localStorage.getItem('basket');
+
 const initialState = {
 	productReducer: {
 		categories,
@@ -25,7 +27,7 @@ const initialState = {
 		product,
 	},
 	shoppingBasketReducer: {
-		basket: [{ product, quantity: 1 }],
+		basket: basket === 'undefined' ? [] : basket,
 	},
 };
 

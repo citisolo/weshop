@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, Dropdown } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 const CategoryMenu = props => {
 	const { categories } = props;
@@ -7,9 +8,11 @@ const CategoryMenu = props => {
 
 	let menuItems = categories.map((category, i) => {
 		return (
-			<Dropdown.Item key={category} href={`/${category}`} name={category} active={activeItem === category}>
-				{category}
-			</Dropdown.Item>
+			<Link to={`/${category}`}>
+				<Dropdown.Item key={category} name={category} active={activeItem === category}>
+					{category}
+				</Dropdown.Item>
+			</Link>
 		);
 	});
 
@@ -19,7 +22,9 @@ const CategoryMenu = props => {
 			<Dropdown item text="Categories">
 				<Dropdown.Menu>{menuItems}</Dropdown.Menu>
 			</Dropdown>
-			<Menu.Item href="/basket">View Basket</Menu.Item>
+			<Menu.Item>
+				<Link to="/basket">View Basket</Link>
+			</Menu.Item>
 		</Menu>
 	);
 };

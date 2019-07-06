@@ -5,8 +5,10 @@ export default (state = {}, action) => {
 		case ADD_PRODUCT: {
 			// check if product is in basket
 			const { basketItem } = action;
+			console.log(state);
 			const productInBasket = state.basket.findIndex(p => p.product.ProductId === basketItem.product.ProductId);
-			if (productInBasket > 0) {
+
+			if (productInBasket >= 0) {
 				const newBasket = state.basket.map(item => {
 					if (item.product.ProductId === basketItem.product.ProductId) {
 						return { ...item, quantity: item.quantity + 1 };
@@ -15,23 +17,25 @@ export default (state = {}, action) => {
 				});
 				return { ...state, basket: newBasket };
 			} else {
-				return { ...state, basket: [...state.basket, action.product] };
+				return { ...state, basket: [...state.basket, basketItem] };
 			}
 		}
 		case REMOVE_PRODUCT: {
 			const { productId } = action;
+			console.log(productId);
 			const newBasket = state.basket.filter(item => {
 				// if item is in array
-				if (item.product.ProductId !== productId) {
+				if (item.product.ProductId === productId) {
 					// if there is more than one decrement quantity
 					if (item.quantity > 1) {
-						return { ...item, quantity: item.quantity - 1 };
+						item.quantity--;
+						return true;
 					} else {
 						// drop the item
 						return false;
 					}
 				}
-				return item;
+				return true;
 			});
 			return { ...state, basket: newBasket };
 		}

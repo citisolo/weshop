@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route, Router, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Home from './views/Home';
@@ -8,8 +8,14 @@ import Menu from './components/CategoryMenu';
 import { createBrowserHistory } from 'history';
 
 function App(props) {
-	const { categories } = props;
-
+	const { categories, basket } = props;
+	useEffect(() => {
+		console.log('mounted');
+		return () => {
+			console.log('unmounted');
+			localStorage.setItem('basket', basket);
+		};
+	}, []);
 	return (
 		<main>
 			<Router history={createBrowserHistory()}>
@@ -26,8 +32,9 @@ function App(props) {
 }
 
 const mapStateToProps = state => {
-	const { productReducer } = state;
+	const { productReducer, shoppingBasketReducer } = state;
 	const { categories } = productReducer;
+	const { basket } = shoppingBasketReducer;
 
 	return {
 		categories,

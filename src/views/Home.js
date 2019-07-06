@@ -15,7 +15,7 @@ const Home = props => {
 	useEffect(() => {
 		props.dispatch(fetchProducts(params.category));
 		setIsLoading(false);
-	}, []);
+	}, [params]);
 
 	return isLoading ? (
 		<Loader active />
@@ -34,7 +34,6 @@ const Home = props => {
 const mapStateToProps = state => {
 	const { productReducer } = state;
 	const { products } = productReducer;
-
 	return {
 		products,
 	};

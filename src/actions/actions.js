@@ -23,7 +23,7 @@ export const getProducts = products => {
 };
 
 export const addProduct = product => {
-	return { type: ADD_PRODUCT, product };
+	return { type: ADD_PRODUCT, basketItem: product };
 };
 
 export const removeProduct = productId => {
@@ -41,7 +41,6 @@ export const fetchProducts = name => dispatch => {
 
 export const fetchProduct = id => dispatch => {
 	const product = Product.filter(p => p.ProductId === id);
-	console.log(product);
 	return dispatch(getProduct(product[0]));
 };
 

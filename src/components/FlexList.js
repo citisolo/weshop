@@ -14,12 +14,13 @@ const FlexItemWrapper = styled.div`
 `;
 
 const FlexList = ({ items }) => {
-	console.log(`[FlexList]: items=${items}`);
 	const formatList = list => {
 		return list.map(item => (
 			<FlexItemWrapper key={item.ProductId}>
 				<Card>
-					<Image src={item.ProductPicUrl} href={`/product/${item.ProductId}`} bordered size="medium" />
+					<Link to={`/product/${item.ProductId}`}>
+						<Image src={item.ProductPicUrl} bordered size="medium" />
+					</Link>
 					<Card.Header>{item.Name}</Card.Header>
 				</Card>
 			</FlexItemWrapper>
