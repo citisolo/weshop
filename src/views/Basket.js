@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import FlexList from '../components/FlexList';
 import { addProductToBasket, removeProductFromBasket } from '../actions/actions';
 import { List, Divider, Container, Label, Menu, Segment } from 'semantic-ui-react';
 import { connect } from 'react-redux';
@@ -21,7 +20,6 @@ const ShoppingBasketWrapper = styled.div`
 `;
 
 const Basket = props => {
-	console.log(props);
 	const { basket } = props;
 	const [totalTax, setTax] = useState(0);
 	const [totalCost, setTotal] = useState(0);

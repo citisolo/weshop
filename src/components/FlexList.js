@@ -1,11 +1,31 @@
 import React from 'react';
-import { List, Card, Image } from 'semantic-ui-react';
+import { List, Card, Image, Header, Label } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const FlexWrapper = styled.div`
-	display: flex;
-	flex-wrap: wrap;
+	.products {
+		display: flex;
+		flex-wrap: wrap;
+		padding: 3em;
+		justify-content: space-evenly;
+	}
+
+	.product-card {
+		padding: 2%;
+		display: flex;
+		width: 20em;
+		flex-direction: column;
+	}
+
+	.product-image img {
+		width: 18em;
+		height: 13em;
+	}
+
+	.product-info {
+		font-size: 1em;
+	}
 `;
 
 const FlexItemWrapper = styled.div`
@@ -16,18 +36,29 @@ const FlexItemWrapper = styled.div`
 const FlexList = ({ items }) => {
 	const formatList = list => {
 		return list.map(item => (
-			<FlexItemWrapper key={item.ProductId}>
-				<Card>
+			<div className="product-card" key={item.ProductId}>
+				<div className="product-image">
 					<Link to={`/product/${item.ProductId}`}>
-						<Image src={item.ProductPicUrl} bordered size="medium" />
+						<img src={item.ProductPicUrl} alt="..." />
 					</Link>
-					<Card.Header>{item.Name}</Card.Header>
-				</Card>
-			</FlexItemWrapper>
+				</div>
+				<div className="product-info">
+					<Link to={`/product/${item.ProductId}`}>
+						<Header as="h3">{item.Name}</Header>
+					</Link>
+					<h5>
+						<Label>{`£${item.Price}`}</Label>
+					</h5>
+				</div>
+			</div>
 		));
 	};
 
-	return <FlexWrapper>{formatList(items)}</FlexWrapper>;
+	return (
+		<FlexWrapper>
+			<section className="products">{formatList(items)}</section>
+		</FlexWrapper>
+	);
 };
 
 export default FlexList;
