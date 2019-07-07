@@ -16,3 +16,7 @@ Launches the test runner in the interactive watch mode.<br>
 ### `yarn run cypress:open`
 
 Runs integration test suite.
+
+### Live Demo
+
+https://weshopfront.herokuapp.com/
