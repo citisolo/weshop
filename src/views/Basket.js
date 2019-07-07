@@ -15,7 +15,6 @@ const ListItemWrapper = styled.div`
 
 const ShoppingBasketWrapper = styled.div`
 	border: 1px solid rgba(34, 36, 38, 0.15);
-	height: 50em;
 	padding: 2em;
 `;
 
@@ -94,7 +93,7 @@ const Basket = props => {
 	return (
 		<ShoppingBasketWrapper>
 			<Segment>
-				<Table celled>
+				<Table>
 					<Table.Body>{items.length > 0 ? items : 'Basket Empty'}</Table.Body>
 				</Table>
 			</Segment>
@@ -115,7 +114,6 @@ const Basket = props => {
 
 const mapStateToProps = state => {
 	const { shoppingBasketReducer } = state;
-	console.log(state);
 	return {
 		basket: shoppingBasketReducer.basket,
 	};

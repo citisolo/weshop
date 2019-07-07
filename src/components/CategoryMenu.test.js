@@ -17,6 +17,6 @@ describe('<CategoryMenu />', () => {
 
 	it('renders all items', () => {
 		const wrapper = shallow(<CategoryMenu categories={categories} />);
-		expect(wrapper.find(Dropdown.Item).length).toBe(21);
+		expect(wrapper.find(Dropdown.Item).length).toBe(25);
 	});
 });

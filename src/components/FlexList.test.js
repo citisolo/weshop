@@ -16,6 +16,6 @@ describe('<FlexList />', () => {
 
 	it('should render all items in array', () => {
 		const wrapper = shallow(<FlexList items={subset} />);
-		expect(wrapper.find(Card).length).toBe(10);
+		expect(wrapper.find('.product-card').length).toBe(10);
 	});
 });
