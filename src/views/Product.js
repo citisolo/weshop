@@ -82,7 +82,7 @@ const Product = props => {
 			<ProductWrapper>
 				<Header as="h2">{product.Name}</Header>
 				<Image src={`/${product.ProductPicUrl}`} />
-				<Header as="h2">{product.Description}</Header>
+				<Header as="h3">{product.Description}</Header>
 				<ProductDataWrapper>
 					<Header as="h3">
 						<Label>{`£${product.Price}`}</Label>

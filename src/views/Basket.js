@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { addProductToBasket, removeProductFromBasket } from '../actions/actions';
-import { List, Divider, Container, Label, Menu, Segment } from 'semantic-ui-react';
+import { List, Divider, Container, Label, Menu, Segment, Table } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
@@ -65,6 +65,7 @@ const Basket = props => {
 		setSubTotal(subTotal);
 		setTax(tax);
 		setTotal(cost);
+		localStorage.setItem('basket', JSON.stringify(basket));
 	}, [basket]);
 
 	const onAddProduct = product => {
@@ -76,28 +77,26 @@ const Basket = props => {
 	};
 
 	const items = basket.map(item => (
-		<List.Item>
-			<ListWrapper>
-				<ListItemWrapper>{`${item.product.Name}`}</ListItemWrapper>
-				<ListItemWrapper>
-					<Label>{`£${item.product.Price}`}</Label>
-				</ListItemWrapper>
-				<ListItemWrapper>
-					<Label>{`Quan: ${item.quantity}`}</Label>
-				</ListItemWrapper>
-				<ListItemWrapper>
-					<Label onClick={() => onAddProduct(item.product)}>+</Label>
-					<Label onClick={() => onRemoveProduct(item.product.ProductId)}>-</Label>
-				</ListItemWrapper>
-			</ListWrapper>
-		</List.Item>
+		<Table.Row>
+			<Table.Cell>{`${item.product.Name}`}</Table.Cell>
+			<Table.Cell>
+				<Label>{`£${item.product.Price}`}</Label>
+			</Table.Cell>
+			<Table.Cell>
+				<Label>{`Quan: ${item.quantity}`}</Label>
+			</Table.Cell>
+			<Table.Cell>
+				<Label onClick={() => onAddProduct(item.product)}>+</Label>
+				<Label onClick={() => onRemoveProduct(item.product.ProductId)}>-</Label>
+			</Table.Cell>
+		</Table.Row>
 	));
 	return (
 		<ShoppingBasketWrapper>
 			<Segment>
-				<List divided relaxed>
-					{items.length > 0 ? items : 'Basket Empty'}
-				</List>
+				<Table celled>
+					<Table.Body>{items.length > 0 ? items : 'Basket Empty'}</Table.Body>
+				</Table>
 			</Segment>
 			<Segment>
 				<List>

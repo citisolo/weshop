@@ -17,7 +17,7 @@ const category = categories[0];
 const products = [...new Set(collection.filter(product => product.Category === category))];
 const product = products[0];
 
-const basket = localStorage.getItem('basket');
+const basket = JSON.parse(localStorage.getItem('basket'));
 
 const initialState = {
 	productReducer: {
@@ -27,7 +27,7 @@ const initialState = {
 		product,
 	},
 	shoppingBasketReducer: {
-		basket: basket === 'undefined' ? [] : basket,
+		basket: basket === null ? [] : basket,
 	},
 };
 
