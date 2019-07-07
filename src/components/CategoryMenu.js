@@ -18,7 +18,9 @@ const CategoryMenu = props => {
 
 	return (
 		<Menu>
-			<Menu.Item header>OnlineShop</Menu.Item>
+			<Menu.Item header>
+				<Link to="/">OnlineShop</Link>
+			</Menu.Item>
 			<Dropdown item text="Categories">
 				<Dropdown.Menu>{menuItems}</Dropdown.Menu>
 			</Dropdown>

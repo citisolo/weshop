@@ -9,20 +9,14 @@ import { createBrowserHistory } from 'history';
 
 function App(props) {
 	const { categories, basket } = props;
-	useEffect(() => {
-		console.log('mounted');
-		return () => {
-			console.log('unmounted');
-			localStorage.setItem('basket', basket);
-		};
-	}, []);
+
 	return (
 		<main>
 			<Router history={createBrowserHistory()}>
 				<Menu categories={categories} />
 				<Switch>
 					<Route path="/basket" component={Basket} />
-					<Route exact path="/" render={() => <Redirect to="/Laptops" />} />
+					<Route exact path="/" render={() => <Redirect to="/Medical" />} />
 					<Route exact path="/:category?" component={Home} />
 					<Route path="/product/:id" component={Product} />
 				</Switch>
