@@ -1,6 +1,6 @@
 ## Ecommerce webfront
 
-![Imgur](https://i.imgur.com/SGcU9IK.gifv)
+![](https://i.imgur.com/SGcU9IK.gif)
 
 Ecommerce frontend with product categories and shopping basket.
 
