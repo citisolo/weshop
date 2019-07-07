@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { addProductToBasket, removeProductFromBasket } from '../actions/actions';
-import { List, Divider, Container, Label, Menu, Segment, Table } from 'semantic-ui-react';
+import { List, Button, Label, Menu, Segment, Table } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
@@ -16,6 +16,9 @@ const ListItemWrapper = styled.div`
 const ShoppingBasketWrapper = styled.div`
 	border: 1px solid rgba(34, 36, 38, 0.15);
 	padding: 2em;
+	.ui.button {
+		padding: 0.7em;
+	}
 `;
 
 const Basket = props => {
@@ -76,7 +79,7 @@ const Basket = props => {
 	};
 
 	const items = basket.map(item => (
-		<Table.Row>
+		<Table.Row data-cy="shopping-item">
 			<Table.Cell>{`${item.product.Name}`}</Table.Cell>
 			<Table.Cell>
 				<Label>{`£${item.product.Price}`}</Label>
@@ -85,8 +88,8 @@ const Basket = props => {
 				<Label>{`Quan: ${item.quantity}`}</Label>
 			</Table.Cell>
 			<Table.Cell>
-				<Label onClick={() => onAddProduct(item.product)}>+</Label>
-				<Label onClick={() => onRemoveProduct(item.product.ProductId)}>-</Label>
+				<Button onClick={() => onAddProduct(item.product)}>+</Button>
+				<Button onClick={() => onRemoveProduct(item.product.ProductId)}>-</Button>
 			</Table.Cell>
 		</Table.Row>
 	));

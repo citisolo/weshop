@@ -1,20 +1,30 @@
-describe.('Selecting a category', () => {
-  it('displays categories', () => {
-    cy.visit('/');
+describe('Category', () => {
+	it('selects a product and views basket', () => {
+		cy.visit('http://localhost:3000/Medical').wait(1000);
 
-    cy.get('[data-cy="category-item"]')[0]
-      .click();
+		cy.get('[data-cy="category"]')
+			.click()
+			.wait(1000);
 
-    cy.get('[data-cy="product"')[0]
-      .click();
-    
-    cy.get('[data-cy="add-to-basket"')
-      .click();
-    
-    cy.visit('/basket');
+		cy.get('[data-cy="category-item"]')
+			.first()
+			.click({ force: true })
+			.wait(1000);
 
-    cy.get('[data-cy="shopping-basket"')
-      .should('have.length', '')
+		cy.get('[data-cy="product-link"]')
+			.first()
+			.click()
+			.wait(1000);
 
-  })
-})
+		cy.get('[data-cy="buy-button"]')
+			.click()
+			.wait(1000);
+
+		cy.get('.ui.primary.button')
+			.first()
+			.click()
+			.wait(1000);
+
+		cy.get('[data-cy="shopping-item"]');
+	});
+});

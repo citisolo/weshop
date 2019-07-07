@@ -5,7 +5,6 @@ export default (state = {}, action) => {
 		case ADD_PRODUCT: {
 			// check if product is in basket
 			const { basketItem } = action;
-			console.log(state);
 			const productInBasket = state.basket.findIndex(p => p.product.ProductId === basketItem.product.ProductId);
 
 			if (productInBasket >= 0) {
@@ -22,7 +21,6 @@ export default (state = {}, action) => {
 		}
 		case REMOVE_PRODUCT: {
 			const { productId } = action;
-			console.log(productId);
 			const newBasket = state.basket.filter(item => {
 				// if item is in array
 				if (item.product.ProductId === productId) {

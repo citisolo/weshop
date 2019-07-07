@@ -38,7 +38,7 @@ const FlexList = ({ items }) => {
 		return list.map(item => (
 			<div className="product-card" key={item.ProductId}>
 				<div className="product-image">
-					<Link to={`/product/${item.ProductId}`}>
+					<Link to={`/product/${item.ProductId}`} data-cy="product-link">
 						<img src={item.ProductPicUrl} alt="..." />
 					</Link>
 				</div>

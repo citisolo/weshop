@@ -8,7 +8,7 @@ const CategoryMenu = props => {
 
 	let menuItems = categories.map((category, i) => {
 		return (
-			<Link to={`/${category}`} key={category}>
+			<Link to={`/${category}`} key={category} data-cy="category-item">
 				<Dropdown.Item name={category} active={activeItem === category}>
 					{category}
 				</Dropdown.Item>
@@ -21,7 +21,7 @@ const CategoryMenu = props => {
 			<Menu.Item header>
 				<Link to="/">OnlineShop</Link>
 			</Menu.Item>
-			<Dropdown item text="Categories">
+			<Dropdown item text="Categories" data-cy="category">
 				<Dropdown.Menu>{menuItems}</Dropdown.Menu>
 			</Dropdown>
 			<Menu.Item>

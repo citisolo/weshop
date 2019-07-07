@@ -87,7 +87,7 @@ const Product = props => {
 					<Header as="h3">
 						<Label>{`£${product.Price}`}</Label>
 					</Header>
-					<Button content="Buy" onClick={onAddProduct} secondary />
+					<Button content="Buy" onClick={onAddProduct} secondary data-cy="buy-button" />
 				</ProductDataWrapper>
 			</ProductWrapper>
 		</React.Fragment>
@@ -95,7 +95,6 @@ const Product = props => {
 };
 
 const mapStateToProps = state => {
-	console.log(state);
 	const {
 		productReducer: { product },
 	} = state;
