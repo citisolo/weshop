@@ -23,7 +23,7 @@ const initialState = {
 		product,
 	},
 	shoppingBasketReducer: {
-		basket: [],
+		basket: products,
 	},
 };
 
@@ -37,5 +37,8 @@ describe('<Basket />', () => {
 		expect(wrapper);
 	});
 
-	it('', () => {});
+	it('renders all products in basket', () => {
+		const wrapper = shallow(<Basket store={store} />);
+		expect(wrapper.find('tr'));
+	});
 });

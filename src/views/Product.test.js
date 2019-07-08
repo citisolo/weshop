@@ -33,7 +33,8 @@ describe('<Product />', () => {
 		expect(wrapper);
 	});
 
-	it('renders all elements', () => {
+	it('renders product', () => {
 		const wrapper = shallow(<Product store={store} match={{ params: { id: 'HT-1000' } }} />);
+		expect(wrapper.contains('img'));
 	});
 });

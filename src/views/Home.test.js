@@ -33,4 +33,9 @@ describe('<Home />', () => {
 		const wrapper = shallow(<Home store={store} />);
 		expect(wrapper);
 	});
+
+	it('renders list of items', () => {
+		const wrapper = shallow(<Home store={store} />);
+		expect(wrapper.find('.product-card'));
+	});
 });
