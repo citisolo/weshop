@@ -15,7 +15,9 @@ Launches the test runner in the interactive watch mode.<br>
 
 ### `yarn run cypress:open`
 
-Runs integration test suite.
+![](https://i.imgur.com/btpDZ0M.gif)
+
+Runs integration test suite(cypress/integration).
 
 ### Live Demo
 
